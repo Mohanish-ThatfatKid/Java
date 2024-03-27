@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/main.css}" media="all" />
+<title th:text=${title}></title>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <a class="btn" th:href="@{/app/signout/{uid}(uid = ${user.uid})}">Sign Out</a>
+            <h2>Attendance Details</h2>
+            <a class="btn" th:href="@{/app/report/{uid}(uid = ${user.uid})}">View Report</a>
+        </div>
+        <div th:if="${attendances}" class="report-container">
+            <div th:each="a : ${attendances}" class="card">
+                <h3 th:text="${a.date}">Date</h3>
+                <div class="details">
+                    <h4>Sign in: <span th:text="${a.inTime}">Absent</span></h4>
+                    <h4>Sign Out: <span th:text="${a.outTime}">Absent</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/admin.css}" media="all" />
+<title th:text=${title}></title>
+  </head>
+  <body>
+    <div th:if=${users} class="container">
+      <div th:each="user : ${users}" class="card">
+        <h3 th:text="${user.uid}"></h3>
+        <p th:text=${user.email}>Emailgoogle@gmail.com</p>
+        <a th:href="@{/app/details/{user.uid}}">View Report</a>
+      </div>
+      
+    </div>
+  </body>
+</html>
